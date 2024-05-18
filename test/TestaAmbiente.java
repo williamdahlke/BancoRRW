@@ -23,7 +23,7 @@ import static org.junit.Assert.*;
 public class TestaAmbiente {
     private final String URL="jdbc:mysql://localhost/bancorrw";
     private final String USER="root";
-    private final String PWD="root";
+    private final String PWD="12345678";
     
     public TestaAmbiente() {
     }
