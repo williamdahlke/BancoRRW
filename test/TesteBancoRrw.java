@@ -116,8 +116,7 @@ public class TesteBancoRrw{
         assertEquals("Use o modificador private para o atributo limite.",true,Modifier.isPrivate(c.getDeclaredFields()[0].getModifiers()));
         assertEquals("Use o modificador private para o atributo taxaJurosLimite.",true,Modifier.isPrivate(c.getDeclaredFields()[1].getModifiers()));
     }
-
-    /* wwww
+    
     @Test
     public void t03verificaEstruturaClasseContaInvestimento() throws ClassNotFoundException {
         Class c = Class.forName("bancorrw.conta.ContaInvestimento");
@@ -143,7 +142,7 @@ public class TesteBancoRrw{
         assertEquals("ContaInvestimento: Use o modificador private para o atributo montanteMinimo.",true,Modifier.isPrivate(c.getDeclaredFields()[1].getModifiers()));
         assertEquals("ContaInvestimento: Use o modificador private para o atributo depositoMinimo.",true,Modifier.isPrivate(c.getDeclaredFields()[2].getModifiers()));
     }
-    
+    /* wwww
     @Test
     public void t04criarContaCorrenteSaldoZero() throws Exception{
         Cliente cliente = new Cliente(-1,"Marcelo","0886",LocalDate.of(1995,2,3),"111");
