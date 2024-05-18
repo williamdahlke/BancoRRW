@@ -1,6 +1,6 @@
 # BANCO RRW
 
-**Software developed in the development course at UFPR in Brazil. This project do bank CRUD, registering customers and accounts on the database**
+**Software developed in the development course at UFPR in Brazil. This project do bank CRUDs, registering customers and accounts on the database**
 **We use the tecnologies below:**
 
 1. JAVA
