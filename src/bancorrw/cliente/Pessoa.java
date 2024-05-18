@@ -12,6 +12,13 @@ public abstract class Pessoa {
     private String cpf;
     private LocalDate dataNascimento;
 
+    public Pessoa(long id, String nome, String cpf, LocalDate dataNascimento) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.dataNascimento = dataNascimento;
+    }    
+    
     public long getId() {
         return id;
     }
