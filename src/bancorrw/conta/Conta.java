@@ -43,8 +43,8 @@ public abstract class Conta {
     
     public abstract void aplicaJuros();
     
-    public void getNumero(){
-        
+    public long getNumero(){
+        return this.getId();
     }
     
     public double getSaldo(){
