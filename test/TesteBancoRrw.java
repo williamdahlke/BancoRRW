@@ -142,7 +142,7 @@ public class TesteBancoRrw{
         assertEquals("ContaInvestimento: Use o modificador private para o atributo montanteMinimo.",true,Modifier.isPrivate(c.getDeclaredFields()[1].getModifiers()));
         assertEquals("ContaInvestimento: Use o modificador private para o atributo depositoMinimo.",true,Modifier.isPrivate(c.getDeclaredFields()[2].getModifiers()));
     }
-    /* wwww
+    
     @Test
     public void t04criarContaCorrenteSaldoZero() throws Exception{
         Cliente cliente = new Cliente(-1,"Marcelo","0886",LocalDate.of(1995,2,3),"111");
@@ -151,6 +151,7 @@ public class TesteBancoRrw{
         assertEquals("Era esperado um saldo zerado para conta criada.",0.0, saldo,0.0);
     }
     
+    /* wwww
     @Test
     public void t05criaContaCorrenteComSaldo2000() throws Exception {
         Cliente cliente = new Cliente(-1,  "Rafael", "333", LocalDate.of(2000, Month.MARCH, 1),"111");
