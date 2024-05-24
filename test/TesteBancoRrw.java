@@ -159,8 +159,7 @@ public class TesteBancoRrw{
         assertEquals(conta,cliente.getContaCorrente());
         assertEquals(cliente.getContaCorrente().getSaldo(),2000.0,0.0);
     }
-
-    /* wwww
+    
     @Test
     public void t06manipulaContaCorrenteDepositar50() throws Exception {
         Cliente cliente = new Cliente(-1,"Marcelo","0886",LocalDate.of(1995,2,3),"111");
@@ -170,6 +169,7 @@ public class TesteBancoRrw{
         assertEquals(50.0, saldo,0.0);
     }
     
+    /* wwww
     @Test
     public void t07manipulaContaCorrenteDepositar100Deposita20Saca60() throws Exception {
         Cliente cliente = new Cliente(-1,"Marcelo","0886",LocalDate.of(1995,2,3),"111");
