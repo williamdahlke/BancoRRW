@@ -14,7 +14,7 @@ public abstract class Conta {
     public Conta(long id, Cliente cliente, double saldo) {
         this.id = id;
         this.cliente = cliente;
-        this.saldo = saldo;
+        this.saldo = saldo;        
     }
        
     public long getId() {
