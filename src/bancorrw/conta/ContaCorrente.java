@@ -39,7 +39,8 @@ public class ContaCorrente extends Conta{
     
     @Override
     public void aplicaJuros() {
-        
+        if (this.getSaldo() < 0){
+        }
     }    
     
     public void saca(double valor) throws RuntimeException{

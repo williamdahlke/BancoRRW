@@ -236,8 +236,7 @@ public class TesteBancoRrw{
         //Verifica se a conta continua com 0
         assertEquals(0.0, c.getSaldo(),0.0);
     }
-    
-    
+        
     @Test
     public void t11manipulaContaCorrenteSaqueNegativo100() throws Exception {
         Cliente cliente = new Cliente(-1,"Marcelo","0886",LocalDate.of(1995,2,3),"111");
@@ -255,7 +254,7 @@ public class TesteBancoRrw{
         assertEquals(0.0, c.getSaldo(),0.0);
     }
     
-    /* wwww
+    
     @Test
     public void t12manipulaContaCorrenteDeposita100AplicaJuros() throws Exception {
         Cliente cliente = new Cliente(-1,"Marcelo","0886",LocalDate.of(1995,2,3),"111");
@@ -267,6 +266,7 @@ public class TesteBancoRrw{
         
     }
     
+    /* wwww
     @Test
     public void t13manipulaContaCorrenteSaca100AplicaJuros() throws Exception {
         Cliente cliente = new Cliente(-1,"Marcelo","0886",LocalDate.of(1995,2,3),"111");
