@@ -51,7 +51,7 @@ public class ContaCorrente extends Conta{
             "Valor do saque não pode ser negativo ou zero. Valor=" + valor);
         }
                 
-        if (valor > this.limite)            
+        if ((valor > this.getSaldo()) && (valor > this.limite))            
         {                        
             throw new RuntimeException(
                 """

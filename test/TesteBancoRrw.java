@@ -277,7 +277,7 @@ public class TesteBancoRrw{
         
     }
     
-    /* wwww
+    
     @Test
     public void t14trocaContaCorrenteDeCliente() throws Exception {
         Cliente cliente = new Cliente(-1,  "Rafael", "333", LocalDate.of(2000, Month.MARCH, 1),"111");
@@ -288,6 +288,7 @@ public class TesteBancoRrw{
         assertEquals(cliente.getContaCorrente().getSaldo(),1500.0,0.0);
     }
     
+    /* wwww
     @Test
     public void t15verificaSaldoZeroParaTrocarContaCorrente() throws Exception {
         Cliente cliente = new Cliente(-1,  "Rafael", "333", LocalDate.of(2000, Month.MARCH, 1),"111");
