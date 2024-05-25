@@ -33,7 +33,11 @@ public abstract class Conta {
         this.cliente = cliente;
     }
     
-    public void deposita(double valor){
+    public void deposita(double valor) throws RuntimeException{        
+        if (valor < 0){
+            throw new RuntimeException(
+            "Valor do depósito não pode ser negativo ou zero. Valor=" + valor);
+        }         
         this.saldo += valor;
     }
     
