@@ -42,7 +42,17 @@ public class ContaCorrente extends Conta{
         
     }    
     
-    public void saca(double valor){
+    public void saca(double valor) throws RuntimeException{
+        if (valor > this.limite)            
+        {                        
+            throw new RuntimeException(
+                """
+                Saldo insuficiente na conta.
+                Valor saque=""" + valor +
+                "\nSaldo=" + this.getSaldo()+
+                "\nLimite=" + this.getLimite()
+            );
+        }
         super.saca(valor);
     }
 
