@@ -168,8 +168,7 @@ public class TesteBancoRrw{
         double saldo = c.getSaldo();
         assertEquals(50.0, saldo,0.0);
     }
-    
-    /* wwww
+        
     @Test
     public void t07manipulaContaCorrenteDepositar100Deposita20Saca60() throws Exception {
         Cliente cliente = new Cliente(-1,"Marcelo","0886",LocalDate.of(1995,2,3),"111");
@@ -181,7 +180,7 @@ public class TesteBancoRrw{
         c.saca(80);
         assertEquals(40.0, c.getSaldo(),0.0);
     }
-    
+    /* wwww
     @Test
     public void t08manipulaContaCorrenteDepositar100Deposita20Saca1000() throws Exception {
         Cliente cliente = new Cliente(-1,"Marcelo","0886",LocalDate.of(1995,2,3),"111");
