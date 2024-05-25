@@ -43,6 +43,11 @@ public class ContaCorrente extends Conta{
     }    
     
     public void saca(double valor) throws RuntimeException{
+        if (valor < 0){
+            throw new RuntimeException(
+            "Valor do saque não pode ser negativo ou zero. Valor=" + valor);
+        }
+                
         if (valor > this.limite)            
         {                        
             throw new RuntimeException(
