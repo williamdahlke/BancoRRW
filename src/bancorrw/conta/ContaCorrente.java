@@ -40,6 +40,8 @@ public class ContaCorrente extends Conta{
     @Override
     public void aplicaJuros() {
         if (this.getSaldo() < 0){
+            double juros = this.getSaldo() * this.taxaJurosLimite * -1;
+            super.saca(juros);
         }
     }    
     
