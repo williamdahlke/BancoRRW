@@ -341,7 +341,7 @@ public class TesteBancoRrw{
         c.saca(200);
         assertEquals(1300.0, c.getSaldo(),0.0);
     }
-    /* wwww
+    
     @Test
     public void t20manipularContaInvestimentoDepositar1000Sacar1100() throws Exception {
         ContaInvestimento c = new ContaInvestimento(0.02,1000,100,1000,-1, new Cliente(-1,"Marcelo","0886",LocalDate.of(1995,2,3),"111"));
@@ -355,7 +355,7 @@ public class TesteBancoRrw{
         }
         assertEquals(2000.0, c.getSaldo(),0.0);
     }
-
+    /* wwww
     @Test
     public void t21manipularContaInvestimentoLimiteDepositarMenosQueMinimo() throws Exception {
         ContaInvestimento c = new ContaInvestimento(0.02,1000,100,1000,-1, new Cliente(-1,"Marcelo","0886",LocalDate.of(1995,2,3),"111"));
