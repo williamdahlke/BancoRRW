@@ -310,7 +310,7 @@ public class TesteBancoRrw{
         assertEquals("Era esperado um saldo de 1000 para conta criada.",1000.0, saldo,0.0);
     }
     
-    /* wwww
+    
     @Test 
     public void t17manipularContaInvestimentoDepositoInicialMenorQueMontanteMinimo() throws Exception{
         try{
@@ -322,7 +322,7 @@ public class TesteBancoRrw{
     
     
     }
-    
+    /* wwww
     @Test
     public void t18manipularContaInvestimentoDepositarMinimo() throws Exception {
         ContaInvestimento c = new ContaInvestimento(0.02,1000,100,1000,-1, new Cliente(-1,"Marcelo","0886",LocalDate.of(1995,2,3),"111"));
