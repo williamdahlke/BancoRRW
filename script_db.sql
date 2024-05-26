@@ -38,4 +38,4 @@ CREATE TABLE `contas_investimento` (
   `deposito_minimo` double DEFAULT NULL,
   PRIMARY KEY (`id_conta`),
   CONSTRAINT `conta_conta_investimento` FOREIGN KEY (`id_conta`) REFERENCES `contas` (`id_conta`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ;
