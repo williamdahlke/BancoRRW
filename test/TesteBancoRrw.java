@@ -311,7 +311,7 @@ public class TesteBancoRrw{
     }
     
     /* wwww
-    @Test
+    @Test 
     public void t17manipularContaInvestimentoDepositoInicialMenorQueMontanteMinimo() throws Exception{
         try{
             ContaInvestimento c = new ContaInvestimento(0.02,1000,100,500,-1, new Cliente(-1,"Marcelo","0886",LocalDate.of(1995,2,3),"111"));
