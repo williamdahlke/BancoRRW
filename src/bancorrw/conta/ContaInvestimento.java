@@ -11,7 +11,7 @@ public class ContaInvestimento extends Conta{
     private double montanteMinimo;
     private double depositoMinimo;
 
-    public ContaInvestimento(double taxaRemuneracaoInvestimento, double montanteMinimo, double depositoMinimo, long id, Cliente cliente, double saldo) {
+    public ContaInvestimento(double taxaRemuneracaoInvestimento, double montanteMinimo, double depositoMinimo, double saldo, long id, Cliente cliente) {
         super(id, cliente, saldo);
         this.taxaRemuneracaoInvestimento = taxaRemuneracaoInvestimento;
         this.montanteMinimo = montanteMinimo;
