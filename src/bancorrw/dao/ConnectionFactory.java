@@ -19,12 +19,17 @@ public class ConnectionFactory {
     //Garente que não haverá instâncias da ConnectionFactory
     private ConnectionFactory(){
     }
-    public static Connection getConnection() throws 
-            SQLException, IOException{
-        throw new RuntimeException("Não implementado. Implemente aqui");
+    public static Connection getConnection() throws SQLException, IOException{
+        readProperties();
+        return (Connection) DriverManager.getConnection(properties.getProperty("db.url"), properties.getProperty("db.user"), properties.getProperty("db.pwd"));
     }
     private static void readProperties() throws IOException
     {
-        throw new RuntimeException("Não implementado. Implemente aqui");
+        if (properties == null){
+            Properties props = new Properties(); 
+            FileInputStream file = new FileInputStream("./src/bancorrw.dao/Database.properties");
+            props.load(file);
+            properties = props;              
+        }
     }
 }

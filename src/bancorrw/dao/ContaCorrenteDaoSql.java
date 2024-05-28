@@ -23,7 +23,10 @@ public class ContaCorrenteDaoSql implements ContaCorrenteDao{
     }
     private static ContaCorrenteDaoSql dao;
     public static ContaCorrenteDaoSql getContaCorrenteDaoSql(){
-        throw new RuntimeException("Não implementado. Implemente aqui");
+        if (dao == null){
+            dao = new ContaCorrenteDaoSql();
+        }
+        return dao;
     } 
     private String insertContaCorrente = 
         "INSERT INTO " +

@@ -23,7 +23,7 @@ public class ContaInvestimentoDaoSql implements ContaInvestimentoDao{
     }
     private static ContaInvestimentoDaoSql dao;
     public static ContaInvestimentoDaoSql getContaInvestimentoDaoSql(){
-        if(dao==null)
+        if (dao == null)
             return dao = new ContaInvestimentoDaoSql();
         else
             return dao;

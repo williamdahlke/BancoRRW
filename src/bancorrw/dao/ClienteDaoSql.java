@@ -23,7 +23,11 @@ public class ClienteDaoSql implements ClienteDao{
     }
     private static ClienteDaoSql dao;
     public static ClienteDaoSql getClienteDaoSql(){
-        throw new RuntimeException("Não implementado. Implemente aqui");
+        if (dao == null)
+        {
+            dao = new ClienteDaoSql();
+        }
+        return dao;
     }  
     private String selectAll = 
         "SELECT "+ 
