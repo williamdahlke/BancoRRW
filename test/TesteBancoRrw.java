@@ -403,7 +403,6 @@ public class TesteBancoRrw{
         assertEquals(LocalDate.of(2000, Month.MARCH, 1),c2.getDataNascimento());
      }
 
-    /* www
     @Test
     public void t25crudClienteUpdate() throws Exception {
         inicializaBD();
@@ -417,6 +416,7 @@ public class TesteBancoRrw{
         assertEquals("777", c2.getCartaoCredito());
      }
     
+        /* www
     @Test
     public void t26crudClienteDelete() throws Exception {
         inicializaBD();
