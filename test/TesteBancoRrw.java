@@ -390,7 +390,6 @@ public class TesteBancoRrw{
         assertEquals("Quando inserir o cliente no BD, recupere o ID gerado e sete no objeto do cliente.",1, c1.getId());  
      }   
 
-        /* wwww
     @Test
     public void t24crudClienteGetById() throws Exception {
         inicializaBD();
@@ -404,6 +403,7 @@ public class TesteBancoRrw{
         assertEquals(LocalDate.of(2000, Month.MARCH, 1),c2.getDataNascimento());
      }
 
+    /* www
     @Test
     public void t25crudClienteUpdate() throws Exception {
         inicializaBD();

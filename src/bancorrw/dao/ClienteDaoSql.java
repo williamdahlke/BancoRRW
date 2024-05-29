@@ -94,7 +94,24 @@ public class ClienteDaoSql implements ClienteDao{
 
     @Override
     public Cliente getById(long id) throws Exception {
-        throw new RuntimeException("Não implementado. Implemente aqui"); 
+        try (Connection connection = ConnectionFactory.getConnection();
+             PreparedStatement stmtGetCliente = connection.prepareStatement(selectById);)
+        {
+            stmtGetCliente.setLong(1, id);
+            try (ResultSet rs = stmtGetCliente.executeQuery()) {
+                if (rs.next()) {
+                    String nome = rs.getString("nome");
+                    String cpf = rs.getString("cpf");
+                    LocalDate dataNascimento = rs.getDate("data_nascimento").toLocalDate();
+                    String cartaoCredito = rs.getString("cartao_credito");
+
+                    // adicionando o objeto à lista
+                    return new Cliente(id,nome,cpf,dataNascimento, cartaoCredito);
+                } else {
+                    throw new Exception("Cliente não encontrado com id=" + id);
+                }
+            }
+        }        
     }
 
     @Override
