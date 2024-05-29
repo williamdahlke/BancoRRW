@@ -11,8 +11,11 @@ public class ContaInvestimento extends Conta{
     private double montanteMinimo;
     private double depositoMinimo;
 
-    public ContaInvestimento(double taxaRemuneracaoInvestimento, double montanteMinimo, double depositoMinimo, double saldo, long id, Cliente cliente) {
+    public ContaInvestimento(double taxaRemuneracaoInvestimento, double montanteMinimo, double depositoMinimo, double saldo, long id, Cliente cliente) throws RuntimeException {
         super(id, cliente, saldo);
+        if (saldo < montanteMinimo) {
+            throw new RuntimeException("Saldo não pode ser menor que montante mínimo.");
+        }
         this.taxaRemuneracaoInvestimento = taxaRemuneracaoInvestimento;
         this.montanteMinimo = montanteMinimo;
         this.depositoMinimo = depositoMinimo;
@@ -43,15 +46,23 @@ public class ContaInvestimento extends Conta{
     }
         
     @Override
-    public void aplicaJuros() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void aplicaJuros() {     
+        double juros = this.getSaldo() * this.taxaRemuneracaoInvestimento;
+        super.deposita(juros);
     }
     
-    public void saca(double valor){
-        
+    public void saca(double valor) throws RuntimeException {
+        if ((this.getSaldo() - valor) < this.montanteMinimo) {
+            throw new RuntimeException("Saldo insuficiente para saque. Valor Saque="
+                    + valor + " Saldo=" + this.getSaldo() + " Montante Minimo=" + this.montanteMinimo);                   
+        }
+        super.saca(valor);
     }
     
-    public void deposita(double valor){
-        
+    public void deposita(double valor) throws RuntimeException {
+        if (valor < this.depositoMinimo) {
+            throw new RuntimeException("Valor do depóstio não atingiu o mínimo. Valor Depósito=" + valor + " Depóstio Mínimo="+ this.depositoMinimo);
+        }
+        super.deposita(valor);
     }  
 }
