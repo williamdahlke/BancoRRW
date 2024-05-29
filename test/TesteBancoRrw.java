@@ -379,7 +379,7 @@ public class TesteBancoRrw{
         assertEquals(2040.0, c.getSaldo(),0.0);
         
     }    
-        /* wwww
+
     @Test
     public void t23crudClienteAdd() throws Exception {
         inicializaBD();
@@ -390,7 +390,7 @@ public class TesteBancoRrw{
         assertEquals("Quando inserir o cliente no BD, recupere o ID gerado e sete no objeto do cliente.",1, c1.getId());  
      }   
 
-
+        /* wwww
     @Test
     public void t24crudClienteGetById() throws Exception {
         inicializaBD();

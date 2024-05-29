@@ -70,7 +70,21 @@ public class ClienteDaoSql implements ClienteDao{
     private final String ressetAIContas = "ALTER TABLE contas AUTO_INCREMENT =1";
     @Override
     public void add(Cliente cliente) throws Exception {
-        throw new RuntimeException("Não implementado. Implemente aqui");
+        try (Connection connection = ConnectionFactory.getConnection();
+             PreparedStatement stmtAdiciona = connection.prepareStatement(insertCliente, Statement.RETURN_GENERATED_KEYS);)
+        {            
+            stmtAdiciona.setString(1, cliente.getNome());
+            stmtAdiciona.setString(2, cliente.getCpf());
+            stmtAdiciona.setDate(3,Date.valueOf(cliente.getDataNascimento()));
+            stmtAdiciona.setString(4,cliente.getCartaoCredito());
+            // executa
+            stmtAdiciona.execute();
+            //Seta o id do cliente
+            ResultSet rs = stmtAdiciona.getGeneratedKeys();
+            rs.next();
+            long id = rs.getLong(1);
+            cliente.setId(id);
+        }         
     }
 
     @Override
@@ -95,7 +109,13 @@ public class ClienteDaoSql implements ClienteDao{
 
     @Override
     public void deleteAll() throws Exception {
-        throw new RuntimeException("Não implementado. Implemente aqui");
+        try (Connection connection=ConnectionFactory.getConnection();
+             PreparedStatement stmtExcluir = connection.prepareStatement(deleteAll);
+             PreparedStatement stmtResetAIPessoas = connection.prepareStatement(ressetAIPessoas);)
+        {
+            stmtExcluir.executeUpdate();
+            stmtResetAIPessoas.executeUpdate();
+        }        
     }
     
 }

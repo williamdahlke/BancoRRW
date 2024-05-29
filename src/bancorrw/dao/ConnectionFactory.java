@@ -27,7 +27,7 @@ public class ConnectionFactory {
     {
         if (properties == null){
             Properties props = new Properties(); 
-            FileInputStream file = new FileInputStream("./src/bancorrw.dao/Database.properties");
+            FileInputStream file = new FileInputStream("./src/bancorrw/dao/Database.properties");
             props.load(file);
             properties = props;              
         }
