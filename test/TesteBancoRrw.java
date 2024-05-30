@@ -66,6 +66,7 @@ public class TesteBancoRrw{
         }
         //exlcui todos os registros do BD
         cliDao.deleteAll();
+        corDao.deleteAll();
     }
     @Test
     public void t01verificaEstruturaClassePessoa() throws ClassNotFoundException {
@@ -432,7 +433,6 @@ public class TesteBancoRrw{
         assertEquals(-1,c1.getId());  
      }
 
-    /* www
     @Test
     public void t27crudContaCorrenteAdd() throws Exception {
         inicializaBD();
@@ -446,6 +446,7 @@ public class TesteBancoRrw{
         assertEquals("Quando inserir a conta corrente no BD, recupere o ID gerado e sete no objeto da conta.",1, conta.getNumero());
     }
 
+    /* www
     @Test
     public void t28crudContaCorrenteGetById() throws Exception {
         inicializaBD();

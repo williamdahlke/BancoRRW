@@ -174,7 +174,7 @@ public class ClienteDaoSql implements ClienteDao{
 
     @Override
     public void deleteAll() throws Exception {
-        try (Connection connection=ConnectionFactory.getConnection();
+        try (Connection connection = ConnectionFactory.getConnection();
              PreparedStatement stmtExcluir = connection.prepareStatement(deleteAll);
              PreparedStatement stmtResetAIPessoas = connection.prepareStatement(ressetAIPessoas);)
         {

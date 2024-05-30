@@ -147,7 +147,27 @@ public class ContaCorrenteDaoSql implements ContaCorrenteDao{
     private final String ressetAIContas = "ALTER TABLE contas AUTO_INCREMENT =1";
     @Override
     public void add(ContaCorrente contaCorrente) throws Exception {
-        throw new RuntimeException("Não implementado. Implemente aqui");
+                
+        try (Connection connection = ConnectionFactory.getConnection();
+             PreparedStatement stmtAdiciona = connection.prepareStatement(insertConta, Statement.RETURN_GENERATED_KEYS);
+             PreparedStatement stmtAdicionaCC = connection.prepareStatement(insertContaCorrente);)
+        {            
+            stmtAdiciona.setLong(1, contaCorrente.getCliente().getId());
+            stmtAdiciona.setDouble(2, contaCorrente.getCliente().getSaldoTotalCliente());
+            stmtAdiciona.execute();
+            
+            ResultSet rs = stmtAdiciona.getGeneratedKeys();
+            rs.next();
+            contaCorrente.setId(rs.getLong(1));
+            
+            stmtAdicionaCC.setLong(1, contaCorrente.getId());
+            stmtAdicionaCC.setDouble(2, contaCorrente.getLimite());
+            stmtAdicionaCC.setDouble(3, contaCorrente.getTaxaJurosLimite());
+            stmtAdicionaCC.execute();            
+        }
+        catch (Exception e){
+            throw new Exception(e.getMessage());
+        }               
     }
 
     @Override
@@ -172,7 +192,16 @@ public class ContaCorrenteDaoSql implements ContaCorrenteDao{
 
     @Override
     public void deleteAll() throws Exception {
-        throw new RuntimeException("Não implementado. Implemente aqui");
+        try (Connection connection = ConnectionFactory.getConnection();
+             PreparedStatement stmtExcluir = connection.prepareStatement(deleteAll);
+             PreparedStatement stmtResetAIConta = connection.prepareStatement(ressetAIContas))
+        {
+            stmtExcluir.executeUpdate();
+            stmtResetAIConta.executeUpdate();
+        }
+        catch(Exception e){
+            throw new Exception(e.getMessage());
+        }        
     }
 
     @Override
