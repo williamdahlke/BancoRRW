@@ -214,7 +214,23 @@ public class ContaInvestimentoDaoSql implements ContaInvestimentoDao{
 
     @Override
     public void update(ContaInvestimento conta) throws Exception {
-        throw new RuntimeException("Não implementado. Implemente aqui");
+        try (Connection connection = ConnectionFactory.getConnection();
+             PreparedStatement stmtUpdate = connection.prepareStatement(updateConta);
+             PreparedStatement stmtUpdateCI = connection.prepareStatement(updateContaInvestimento))
+        {
+            stmtUpdate.setDouble(1, conta.getSaldo());
+            stmtUpdate.setLong(2, conta.getId());
+            stmtUpdate.executeUpdate();
+            
+            stmtUpdateCI.setDouble(1, conta.getTaxaRemuneracaoInvestimento());
+            stmtUpdateCI.setDouble(2, conta.getMontanteMinimo());
+            stmtUpdateCI.setDouble(3, conta.getDepositoMinimo());
+            stmtUpdateCI.setLong(4, conta.getId());
+            stmtUpdateCI.executeUpdate();
+        }
+        catch(Exception e){
+            throw new Exception(e.getMessage());
+        }
     }
 
     @Override

@@ -575,8 +575,7 @@ public class TesteBancoRrw{
    
      }     
     
-        /* www
-        @Test
+    @Test
     public void t33crudContaInvestimentoUpdate() throws Exception {
         inicializaBD();
         //Adiciona conta no BD
@@ -588,9 +587,7 @@ public class TesteBancoRrw{
         cliDao.add(cliente);
         invDao.add(conta1);
         invDao.add(conta2);
-
-        
-
+       
         //Atualiza conta (saldo)
         conta1.saca(500);
         conta1.setDepositoMinimo(200);
@@ -604,6 +601,7 @@ public class TesteBancoRrw{
         assertEquals(700, conta1BD.getMontanteMinimo(),0.0); 
      }  
     
+            /* www
     @Test
     public void t34crudContaInvestimentoDelete() throws Exception {
         inicializaBD();
