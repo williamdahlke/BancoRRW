@@ -773,7 +773,6 @@ public class TesteBancoRrw{
         List<ContaInvestimento> lista = clienteBD.getContasInvestimento();               
     }
     
-        /* www
     @Test
     public void t40testaContaInvestimentoDeleteAll() throws Exception {
         inicializaBD();
@@ -875,7 +874,7 @@ public class TesteBancoRrw{
         assertEquals(4, listaContasInvestimento2.size());          
         
     }
-    
+
     @Test
     public void t42testaSeODeleteAllDaContaInvestimentoNaoEliminaTodasAsContasCorrentesDoCliente() throws Exception {
         inicializaBD();
@@ -938,8 +937,6 @@ public class TesteBancoRrw{
         //Verifica se temos 4 contas correntes recuperadas
         assertEquals(4, listaContaCorrente2.size());  
         //Verifica se as 4 contas investimento foram apagadas
-        assertEquals(0, listaContasInvestimento2.size());          
-        
+        assertEquals(0, listaContasInvestimento2.size());                  
     }
-    */
 }
