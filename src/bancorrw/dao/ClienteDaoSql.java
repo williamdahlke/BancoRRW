@@ -89,7 +89,25 @@ public class ClienteDaoSql implements ClienteDao{
 
     @Override
     public List<Cliente> getAll() throws Exception {
-        throw new RuntimeException("Não implementado. Implemente aqui");
+        try (Connection connection = ConnectionFactory.getConnection();
+             PreparedStatement stmtGetCliente = connection.prepareStatement(selectAll);)
+        {  
+            try (ResultSet rs = stmtGetCliente.executeQuery()) 
+            {
+                List<Cliente> clientes = new ArrayList<Cliente>();
+                while (rs.next()) {
+                    long id = rs.getLong("id_cliente");
+                    String nome = rs.getString("nome");
+                    String cpf = rs.getString("cpf");
+                    LocalDate dataNascimento = rs.getDate("data_nascimento").toLocalDate();
+                    String cartaoCredito = rs.getString("cartao_credito");
+
+                    // adicionando o objeto à lista
+                    clientes.add(new Cliente(id,nome,cpf,dataNascimento,cartaoCredito));
+                }
+                return clientes;
+            }                          
+        }      
     }
 
     @Override
@@ -130,7 +148,13 @@ public class ClienteDaoSql implements ClienteDao{
 
     @Override
     public void delete(Cliente cliente) throws Exception {
-        throw new RuntimeException("Não implementado. Implemente aqui");
+        try (Connection connection=ConnectionFactory.getConnection();
+             PreparedStatement stmtExcluir = connection.prepareStatement(deleteById);)
+        {
+            stmtExcluir.setLong(1, cliente.getId());
+            stmtExcluir.executeUpdate();
+            cliente.setId(-1);
+        }        
     }
 
     @Override

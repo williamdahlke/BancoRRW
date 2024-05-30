@@ -416,7 +416,6 @@ public class TesteBancoRrw{
         assertEquals("777", c2.getCartaoCredito());
      }
     
-        /* www
     @Test
     public void t26crudClienteDelete() throws Exception {
         inicializaBD();
@@ -433,6 +432,7 @@ public class TesteBancoRrw{
         assertEquals(-1,c1.getId());  
      }
 
+    /* www
     @Test
     public void t27crudContaCorrenteAdd() throws Exception {
         inicializaBD();
