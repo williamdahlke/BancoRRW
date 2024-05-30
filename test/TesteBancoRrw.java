@@ -639,7 +639,6 @@ public class TesteBancoRrw{
         
     }
     
-    /* www
     @Test
     public void t36manipulaSaldoDaContaCorrenteEGravaBdERecuperaSaldo() throws Exception {
         inicializaBD();
@@ -660,6 +659,7 @@ public class TesteBancoRrw{
         assertEquals(2000.0,c2.getSaldo(),0.0);
         
     }
+    
     @Test
     public void t37cria4ContasSalvaNoBDeRecuperaTodas() throws Exception {
         inicializaBD();
@@ -767,15 +767,13 @@ public class TesteBancoRrw{
         //Verifica se carregou as Contas Investementos no cliente
         assertEquals(2, cliente.getContasInvestimento().size());
         //Verifica se a soma dos saldos bate
-        assertEquals(6000.0, cliente.getSaldoTotalCliente(),0.0);
-        
+        assertEquals(6000.0, cliente.getSaldoTotalCliente(),0.0);        
         
         Cliente clienteBD = cliDao.getById(cliente.getId());
-        List<ContaInvestimento> lista = clienteBD.getContasInvestimento();
-        
-        
+        List<ContaInvestimento> lista = clienteBD.getContasInvestimento();               
     }
     
+        /* www
     @Test
     public void t40testaContaInvestimentoDeleteAll() throws Exception {
         inicializaBD();

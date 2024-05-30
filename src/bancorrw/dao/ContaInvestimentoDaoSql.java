@@ -292,7 +292,37 @@ public class ContaInvestimentoDaoSql implements ContaInvestimentoDao{
 
     @Override
     public List<ContaInvestimento> getContasInvestimentoByCliente(Cliente cliente) throws Exception  {
-        throw new RuntimeException("Não implementado. Implemente aqui");
+        try (Connection connection = ConnectionFactory.getConnection();
+             PreparedStatement stmtGetConta = connection.prepareStatement(selectByCliente))
+        {
+            stmtGetConta.setLong(1, cliente.getId());
+            try (ResultSet rs = stmtGetConta.executeQuery()){
+                List<ContaInvestimento> contas = new ArrayList<ContaInvestimento>();
+                while (rs.next()){                 
+                    long idConta = rs.getLong("id_conta");
+                    double saldo = rs.getDouble("saldo");
+                    double taxaRemuneracaoInvest = rs.getDouble("taxa_remuneracao_investimento");                    
+                    double montanteMinimo = rs.getDouble("montante_minimo");
+                    double depositoMinimo = rs.getDouble("deposito_minimo");
+                    
+                    long idCliente = rs.getLong("id_cliente");
+                    String nome = rs.getString("nome");
+                    String cpf = rs.getString("cpf");
+                    LocalDate dtNascimento = rs.getDate("data_nascimento").toLocalDate();
+                    String cartaoCredito = rs.getString("cartao_credito");
+                    
+                    Cliente clienteBd = new Cliente(idCliente, nome, cpf, dtNascimento, cartaoCredito);
+                    contas.add(new ContaInvestimento(taxaRemuneracaoInvest, montanteMinimo, depositoMinimo, saldo, idConta, clienteBd));                    
+                }
+                return contas;
+            }
+            catch (Exception e){
+                throw new Exception(e.getMessage());
+            }
+        }
+        catch (Exception e){
+            throw new Exception(e.getMessage());
+        }              
     }
     
 }

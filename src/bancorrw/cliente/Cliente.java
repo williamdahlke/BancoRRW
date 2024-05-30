@@ -46,8 +46,19 @@ public class Cliente extends Pessoa{
         this.contasInvestimento.add(contaInvestimento);
     }
 
-    public double getSaldoTotalCliente(){
-        return 0;
+    public double getSaldoTotalCliente(){                
+        final double[] somaInvestimento = {0};        
+        
+        if (this.contasInvestimento != null){
+            this.contasInvestimento.forEach(conta -> somaInvestimento[0] += conta.getSaldo());    
+        }
+        
+        double saldoCorrente = 0;
+        if (this.contaCorrente != null){
+            saldoCorrente = this.contaCorrente.getSaldo();
+        }
+        
+        return saldoCorrente + somaInvestimento[0];
     }
 
     public String getCartaoCredito() {
