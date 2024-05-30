@@ -19,6 +19,7 @@ public class ContaInvestimento extends Conta{
         this.taxaRemuneracaoInvestimento = taxaRemuneracaoInvestimento;
         this.montanteMinimo = montanteMinimo;
         this.depositoMinimo = depositoMinimo;
+        this.getCliente().addContaInvestimento(this);
     }
 
     public double getTaxaRemuneracaoInvestimento() {

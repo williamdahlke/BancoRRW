@@ -195,7 +195,7 @@ public class ContaCorrenteDaoSql implements ContaCorrenteDao{
                     String cartaoCredito = rs.getString("cartao_credito");
                     
                     Cliente cliente = new Cliente(idCliente, nome, cpf, dataNascimento, cartaoCredito);
-                    contas.add(new ContaCorrente(limite, taxaJurosLimite, idConta, cliente, saldo));
+                    contas.add(new ContaCorrente(limite, taxaJurosLimite, idConta, cliente, saldo));                    
                 }
                 return contas;
             } 

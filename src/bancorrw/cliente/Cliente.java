@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class Cliente extends Pessoa{
 
-    private List<ContaInvestimento> contasInvestimento;
+    private List<ContaInvestimento> contasInvestimento = new ArrayList<ContaInvestimento>();
     private ContaCorrente contaCorrente;
     private String cartaoCredito;
     
@@ -41,7 +41,7 @@ public class Cliente extends Pessoa{
     public List<ContaInvestimento> getContasInvestimento() {
         return contasInvestimento;
     }
-
+      
     public void addContaInvestimento(ContaInvestimento contaInvestimento) {
         this.contasInvestimento.add(contaInvestimento);
     }

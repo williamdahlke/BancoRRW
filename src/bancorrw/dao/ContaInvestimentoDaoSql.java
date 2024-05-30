@@ -177,7 +177,39 @@ public class ContaInvestimentoDaoSql implements ContaInvestimentoDao{
 
     @Override
     public ContaInvestimento getById(long id) throws Exception {
-        throw new RuntimeException("Não implementado. Implemente aqui"); 
+        try (Connection connection = ConnectionFactory.getConnection();
+             PreparedStatement stmtGet = connection.prepareStatement(selectById)){            
+            
+            stmtGet.setLong(1, id);
+            try (ResultSet rs = stmtGet.executeQuery()){
+                if (rs.next()){
+                    long idConta = rs.getLong("id_conta");
+                    double saldo = rs.getDouble("saldo");
+                    double taxaRemuneracaoInvest = rs.getDouble("taxa_remuneracao_investimento");
+                    double montanteMinimo = rs.getDouble("montante_minimo");
+                    double depositoMinimo = rs.getDouble("deposito_minimo");
+                    long idCliente = rs.getLong("id_cliente");
+                    String nome = rs.getString("nome");
+                    String cpf = rs.getString("cpf");
+                    LocalDate dtNascimento = rs.getDate("data_nascimento").toLocalDate();
+                    String cartaoCredito = rs.getString("cartao_credito");
+
+                    Cliente cliente = new Cliente(idCliente, nome, cpf, dtNascimento, cartaoCredito);                    
+                    ContaInvestimento conta = new ContaInvestimento(taxaRemuneracaoInvest, montanteMinimo, depositoMinimo, saldo, idConta, cliente);
+                    return conta;
+                } 
+                else{
+                    throw new Exception("Conta não encontrada para o id:" + id);
+                }                
+            } 
+            catch (Exception e){
+                throw new Exception(e.getMessage());
+            }
+            
+        }
+        catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
     }
 
     @Override
