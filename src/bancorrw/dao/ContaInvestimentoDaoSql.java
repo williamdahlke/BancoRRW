@@ -147,7 +147,27 @@ public class ContaInvestimentoDaoSql implements ContaInvestimentoDao{
 
     @Override
     public void add(ContaInvestimento conta) throws Exception {
-        throw new RuntimeException("Não implementado. Implemente aqui");       
+        try (Connection connection = ConnectionFactory.getConnection();
+             PreparedStatement stmtAddConta = connection.prepareStatement(insertConta, Statement.RETURN_GENERATED_KEYS);
+             PreparedStatement stmtAddInv = connection.prepareStatement(insertContaInvstimento))
+        {
+            stmtAddConta.setLong(1, conta.getCliente().getId());
+            stmtAddConta.setDouble(2, conta.getSaldo());
+            stmtAddConta.execute();
+            
+            ResultSet rs = stmtAddConta.getGeneratedKeys();
+            rs.next();
+            conta.setId(rs.getLong(1));
+                                    
+            stmtAddInv.setLong(1, conta.getId());
+            stmtAddInv.setDouble(2, conta.getTaxaRemuneracaoInvestimento());
+            stmtAddInv.setDouble(3, conta.getMontanteMinimo());
+            stmtAddInv.setDouble(4, conta.getDepositoMinimo());
+            stmtAddInv.execute();
+        } 
+        catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
     }
 
     @Override
@@ -172,7 +192,16 @@ public class ContaInvestimentoDaoSql implements ContaInvestimentoDao{
 
     @Override
     public void deleteAll() throws Exception {
-        throw new RuntimeException("Não implementado. Implemente aqui");
+        try (Connection connection = ConnectionFactory.getConnection();
+             PreparedStatement stmtDelete = connection.prepareStatement(deleteAll);
+             PreparedStatement stmtResetAI = connection.prepareStatement(ressetAIContas))
+        {
+            stmtDelete.executeUpdate();
+            stmtResetAI.executeUpdate();
+        }
+        catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
     }
 
     @Override

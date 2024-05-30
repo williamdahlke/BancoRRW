@@ -67,6 +67,7 @@ public class TesteBancoRrw{
         //exlcui todos os registros do BD
         cliDao.deleteAll();
         corDao.deleteAll();
+        invDao.deleteAll();
     }
     @Test
     public void t01verificaEstruturaClassePessoa() throws ClassNotFoundException {
@@ -510,8 +511,6 @@ public class TesteBancoRrw{
         assertEquals(-1,conta.getId());          
      }
     
-    /* www
-
     @Test
     public void t31crudContaInvestimentoAdd() throws Exception {
         inicializaBD();
@@ -531,6 +530,7 @@ public class TesteBancoRrw{
 
      }    
 
+    /* www
     @Test
     public void t32crudContaInvestimentoGetById() throws Exception {
         inicializaBD();
