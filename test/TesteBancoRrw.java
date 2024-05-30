@@ -621,9 +621,7 @@ public class TesteBancoRrw{
         //Verifica se tem depois de excluir uma conta.
         assertEquals(1,invDao.getAll().size());    
      }    
-    
-    /* www
-    
+        
     @Test
     public void t35verificaSeAContaCorrenteFoiSetadaNoCliente() throws Exception {
         inicializaBD();
@@ -640,6 +638,8 @@ public class TesteBancoRrw{
         assertEquals("A conta do cliente deve ter o mesmo identificador da conta que foi craida. ", c2.getId(),c3.getId());
         
     }
+    
+    /* www
     @Test
     public void t36manipulaSaldoDaContaCorrenteEGravaBdERecuperaSaldo() throws Exception {
         inicializaBD();

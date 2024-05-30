@@ -289,9 +289,32 @@ public class ContaCorrenteDaoSql implements ContaCorrenteDao{
 
     @Override
     public ContaCorrente getContaCorrenteByCliente(Cliente cliente) throws Exception{
-        throw new RuntimeException("Não implementado. Implemente aqui");   
-    }
-    
-    
-    
+        try (Connection connection = ConnectionFactory.getConnection();
+             PreparedStatement stmtGetConta = connection.prepareStatement(selectByCliente))
+        {
+            stmtGetConta.setLong(1, cliente.getId());
+            try (ResultSet rs = stmtGetConta.executeQuery()){
+                if (rs.next()){
+                    long idConta = rs.getLong("id_conta");
+                    double saldo = rs.getDouble("saldo");
+                    double limite = rs.getDouble("limite");
+                    double taxaJurosLimite = rs.getDouble("taxa_juros_limite");
+                    long idCliente = rs.getLong("id_cliente");
+                    String nome = rs.getString("nome");
+                    String cpf = rs.getString("cpf");
+                    LocalDate dtNascimento = rs.getDate("data_nascimento").toLocalDate();
+                    String cartaoCredito = rs.getString("cartao_credito");
+                    
+                    Cliente clienteBd = new Cliente(idCliente, nome, cpf, dtNascimento, cartaoCredito);
+                    return new ContaCorrente(limite, taxaJurosLimite, idConta, clienteBd, saldo);                    
+                } 
+                else{
+                    throw new Exception("Não foi encontrado nenhuma conta corrente para o cliente com o id:" + cliente.getId());
+                }
+            }
+        }
+        catch(Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }            
 }
