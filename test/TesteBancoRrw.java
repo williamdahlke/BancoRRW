@@ -470,7 +470,6 @@ public class TesteBancoRrw{
         assertEquals(1, conta2.getId());   
      }
     
-    /* www
     @Test
     public void t29crudContaCorrenteUpdate() throws Exception {
         inicializaBD();
@@ -491,7 +490,9 @@ public class TesteBancoRrw{
         assertEquals(700, conta2.getSaldo(),0.0);
         assertEquals(1500, conta2.getLimite(),0.0);
         assertEquals(0.06, conta2.getTaxaJurosLimite(),0.0); 
-     }    
+     } 
+        /* www
+    
     @Test
     public void t30crudContaCorrenteDelete() throws Exception {
         inicializaBD();
