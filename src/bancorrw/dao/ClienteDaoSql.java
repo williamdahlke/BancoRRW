@@ -77,22 +77,24 @@ public class ClienteDaoSql implements ClienteDao{
             stmtAdiciona.setString(2, cliente.getCpf());
             stmtAdiciona.setDate(3,Date.valueOf(cliente.getDataNascimento()));
             stmtAdiciona.setString(4,cliente.getCartaoCredito());
-            // executa
             stmtAdiciona.execute();
-            //Seta o id do cliente
+            
             ResultSet rs = stmtAdiciona.getGeneratedKeys();
             rs.next();
             long id = rs.getLong(1);
             cliente.setId(id);
-        }         
+        } 
+        catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
     }
 
     @Override
     public List<Cliente> getAll() throws Exception {
         try (Connection connection = ConnectionFactory.getConnection();
-             PreparedStatement stmtGetCliente = connection.prepareStatement(selectAll);)
+             PreparedStatement stmtGetAll = connection.prepareStatement(selectAll);)
         {  
-            try (ResultSet rs = stmtGetCliente.executeQuery()) 
+            try (ResultSet rs = stmtGetAll.executeQuery()) 
             {
                 List<Cliente> clientes = new ArrayList<Cliente>();
                 while (rs.next()) {
@@ -106,8 +108,11 @@ public class ClienteDaoSql implements ClienteDao{
                     clientes.add(new Cliente(id,nome,cpf,dataNascimento,cartaoCredito));
                 }
                 return clientes;
-            }                          
-        }      
+            } 
+        } 
+        catch (Exception e){
+            throw new Exception(e.getMessage());
+        }        
     }
 
     @Override
@@ -125,16 +130,20 @@ public class ClienteDaoSql implements ClienteDao{
 
                     // adicionando o objeto à lista
                     return new Cliente(id,nome,cpf,dataNascimento, cartaoCredito);
-                } else {
+                } 
+                else {
                     throw new Exception("Cliente não encontrado com id=" + id);
                 }
             }
-        }        
+        } 
+        catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
     }
 
     @Override
     public void update(Cliente cliente) throws Exception {
-        try (Connection connection=ConnectionFactory.getConnection();
+        try (Connection connection = ConnectionFactory.getConnection();
             PreparedStatement stmtAtualiza = connection.prepareStatement(updateCliente);)
         {
             stmtAtualiza.setString(1,cliente.getNome());
@@ -143,7 +152,10 @@ public class ClienteDaoSql implements ClienteDao{
             stmtAtualiza.setString(4,cliente.getCartaoCredito());
             stmtAtualiza.setLong(5,cliente.getId());
             stmtAtualiza.executeUpdate();         
-        }        
+        }
+        catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
     }
 
     @Override
@@ -154,7 +166,10 @@ public class ClienteDaoSql implements ClienteDao{
             stmtExcluir.setLong(1, cliente.getId());
             stmtExcluir.executeUpdate();
             cliente.setId(-1);
-        }        
+        } 
+        catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
     }
 
     @Override
@@ -165,7 +180,10 @@ public class ClienteDaoSql implements ClienteDao{
         {
             stmtExcluir.executeUpdate();
             stmtResetAIPessoas.executeUpdate();
-        }        
+        }
+        catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
     }
     
 }
