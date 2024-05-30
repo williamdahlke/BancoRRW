@@ -445,8 +445,7 @@ public class TesteBancoRrw{
         //Verifica se o número da conta=1. (Primeiro do BD)
         assertEquals("Quando inserir a conta corrente no BD, recupere o ID gerado e sete no objeto da conta.",1, conta.getNumero());
     }
-
-    /* www
+    
     @Test
     public void t28crudContaCorrenteGetById() throws Exception {
         inicializaBD();
@@ -470,6 +469,8 @@ public class TesteBancoRrw{
         assertEquals(0.05, conta2.getTaxaJurosLimite(),0.0);
         assertEquals(1, conta2.getId());   
      }
+    
+    /* www
     @Test
     public void t29crudContaCorrenteUpdate() throws Exception {
         inicializaBD();
