@@ -601,7 +601,6 @@ public class TesteBancoRrw{
         assertEquals(700, conta1BD.getMontanteMinimo(),0.0); 
      }  
     
-            /* www
     @Test
     public void t34crudContaInvestimentoDelete() throws Exception {
         inicializaBD();
@@ -615,7 +614,6 @@ public class TesteBancoRrw{
         invDao.add(conta1);
         invDao.add(conta2);
         
- 
         //Exclui cota
         //Verifica se tem 2 na lista antes de exluir
         assertEquals(2,invDao.getAll().size());    
@@ -623,6 +621,8 @@ public class TesteBancoRrw{
         //Verifica se tem depois de excluir uma conta.
         assertEquals(1,invDao.getAll().size());    
      }    
+    
+    /* www
     
     @Test
     public void t35verificaSeAContaCorrenteFoiSetadaNoCliente() throws Exception {

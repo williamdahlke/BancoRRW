@@ -172,7 +172,36 @@ public class ContaInvestimentoDaoSql implements ContaInvestimentoDao{
 
     @Override
     public List<ContaInvestimento> getAll() throws Exception {
-        throw new RuntimeException("Não implementado. Implemente aqui");
+        try (Connection connection = ConnectionFactory.getConnection();
+             PreparedStatement stmtGetAll = connection.prepareStatement(selectAll))
+        {
+            try (ResultSet rs = stmtGetAll.executeQuery()){
+                List<ContaInvestimento> contas = new ArrayList<ContaInvestimento>();
+                while (rs.next()){                   
+                   long idConta = rs.getLong("id_conta");
+                   double saldo = rs.getDouble("saldo");
+                   double taxaRemunInvest = rs.getDouble("taxa_remuneracao_investimento");
+                   double montanteMinimo = rs.getDouble("montante_minimo");
+                   double depositoMinimo = rs.getDouble("deposito_minimo");
+                   long idCliente = rs.getLong("id_cliente");
+                   String nome = rs.getString("nome");
+                   String cpf = rs.getString("cpf");
+                   LocalDate dtNascimento = rs.getDate("data_nascimento").toLocalDate();
+                   String cartaoCredito = rs.getString("cartao_credito");
+                   
+                   Cliente cliente = new Cliente(idCliente, nome, cpf, dtNascimento, cartaoCredito);
+                   ContaInvestimento conta = new ContaInvestimento(taxaRemunInvest, montanteMinimo, depositoMinimo, saldo, idConta, cliente);
+                   contas.add(conta);
+                }
+                return contas;
+            } 
+            catch (Exception e){
+                throw new Exception(e.getMessage());
+            }
+        }
+        catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
     }
 
     @Override
@@ -235,7 +264,16 @@ public class ContaInvestimentoDaoSql implements ContaInvestimentoDao{
 
     @Override
     public void delete(ContaInvestimento conta) throws Exception {
-        throw new RuntimeException("Não implementado. Implemente aqui");
+        try (Connection connection = ConnectionFactory.getConnection();
+             PreparedStatement stmtDelete = connection.prepareStatement(deleteById))
+        {
+            stmtDelete.setLong(1, conta.getId());
+            stmtDelete.executeUpdate();
+            conta.setId(-1);
+        } 
+        catch(Exception e){
+            throw new Exception(e.getMessage());
+        }
     }
 
     @Override
