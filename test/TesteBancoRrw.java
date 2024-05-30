@@ -491,7 +491,6 @@ public class TesteBancoRrw{
         assertEquals(1500, conta2.getLimite(),0.0);
         assertEquals(0.06, conta2.getTaxaJurosLimite(),0.0); 
      } 
-        /* www
     
     @Test
     public void t30crudContaCorrenteDelete() throws Exception {
@@ -508,12 +507,12 @@ public class TesteBancoRrw{
         //Verifoca se a quantidade de contas correntes é zero.
         assertEquals(0,corDao.getAll().size());  
         //Verifica se a Conta Corrente ficou com id=-1 (Isso indica que não está no BD)
-        assertEquals(-1,conta.getId());  
-        
-        
+        assertEquals(-1,conta.getId());          
      }
+    
+    /* www
 
-        @Test
+    @Test
     public void t31crudContaInvestimentoAdd() throws Exception {
         inicializaBD();
         //Adiciona conta no BD
